@@ -8,3 +8,8 @@ body {
   line-height: 1.8;
   word-wrap: break-word;
 }
+
+.active {
+  background-color: unset !important;
+  color: #cfa670 !important;
+}

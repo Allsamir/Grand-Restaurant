@@ -1,0 +1,30 @@
+.nav-link:hover::after {
+  width: 100%;
+}
+.nav-link:hover {
+  color: #cfa670;
+}
+.nav-link::after {
+  content: "";
+  width: 0%;
+  height: 0.1rem;
+  background-color: #cfa670;
+  position: absolute;
+  left: 0;
+  bottom: -0.6rem;
+  transition: 0.3s;
+}
+.login {
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: none;
+  letter-spacing: 2px;
+  padding: 12px 24px;
+  fill: #222222;
+  color: #222222;
+  background-color: #02010100;
+  border-style: solid;
+  border-width: 2px 2px 2px 2px;
+  border-color: #222222;
+  border-radius: 5px 5px 5px 5px;
+}
