@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAxios from "../../hooks/useAxios";
 import Swal from "sweetalert2";
+import PageTitle from "../../components/PageTitle";
 const AddFoodItem = () => {
   const { register, handleSubmit } = useForm();
   const secureAxios = useAxios();
@@ -32,14 +33,7 @@ const AddFoodItem = () => {
   };
   return (
     <>
-      <div className="bg-gold py-12 mb-16">
-        <h1
-          className="text-center text-5xl uppercase font-bold text-white
-        "
-        >
-          Add Food Items
-        </h1>
-      </div>
+      <PageTitle text="Add Food Items" />
       <div className="card shrink-0 md:w-4/5 w-full mx-auto shadow-2xl bg-base-100 mb-12">
         <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
           <div className="flex gap-8">
