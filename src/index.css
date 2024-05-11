@@ -13,3 +13,19 @@ body {
   background-color: unset !important;
   color: #cfa670 !important;
 }
+
+.login,
+.errorPageButton {
+  font-size: 16px;
+  font-weight: 900;
+  text-transform: none;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  fill: #222222;
+  color: #222222;
+  background-color: #02010100;
+  border-style: solid;
+  border-width: 2px 2px 2px 2px;
+  border-color: #222222;
+  border-radius: 5px 5px 5px 5px;
+}

@@ -8,6 +8,12 @@ export default {
       sans: ["Lato", "sans-serif"],
       kristi: ["Kristi", "cursive"],
     },
+    colors: {
+      white: "#fff",
+      black: "#000",
+      "navi-blue": "#222D38",
+      gold: "#cfa670",
+    },
   },
   plugins: [daisyui],
   daisyui: {

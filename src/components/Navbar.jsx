@@ -1,4 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
+import TemporaryDrawer from "./SideNavbar";
 import "./navbar.css";
 const Navbar = () => {
   return (
@@ -15,29 +16,38 @@ const Navbar = () => {
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1 gap-4 items-center">
-          <NavLink to={`/`} className={`mx-6 relative nav-link font-semibold`}>
-            Home
-          </NavLink>
+          <div className="md:inline-block hidden">
+            <NavLink
+              to={`/`}
+              className={`mx-6 relative nav-link font-semibold`}
+            >
+              Home
+            </NavLink>
 
-          <NavLink
-            to={`/all-foods`}
-            className={`mx-6 relative nav-link font-semibold`}
-          >
-            All Foods
-          </NavLink>
+            <NavLink
+              to={`/all-foods`}
+              className={`mx-6 relative nav-link font-semibold`}
+            >
+              All Foods
+            </NavLink>
 
-          <NavLink
-            to={`/gallery`}
-            className={`mx-6 relative nav-link font-semibold`}
-          >
-            Gallery
-          </NavLink>
-          <Link
-            className="login hover:bg-[#cfa670] hover:text-white hover:border-[#cfa670] transition"
-            to={`/login`}
-          >
-            Login
-          </Link>
+            <NavLink
+              to={`/gallery`}
+              className={`mx-6 relative nav-link font-semibold`}
+            >
+              Gallery
+            </NavLink>
+            <Link
+              className="login hover:bg-gold hover:text-white hover:border-gold transition"
+              to={`/login`}
+            >
+              Login
+            </Link>
+          </div>
+
+          <div className="md:hidden inline-block">
+            <TemporaryDrawer />
+          </div>
         </ul>
       </div>
     </div>

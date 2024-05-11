@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-[#222D38] text-white">
+    <footer className="footer p-10 bg-navi-blue text-white">
       <aside>
         <img
           src="https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/demo3/wp-content/uploads/sites/3/2020/12/logo@2x_white.png"
