@@ -15,7 +15,7 @@ const FoodCard = ({ food }) => {
         <p className="text-base pb-2">{food.price}$</p>
         <p className="text-base pb-6">Quantity: {food.quantity}</p>
         <Link
-          to={`/`}
+          to={`/food/${food._id}`}
           style={{ letterSpacing: "1px" }}
           className=" btn btn-outline text-white hover:bg-gold hover:border-gold"
         >

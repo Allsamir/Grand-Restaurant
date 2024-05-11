@@ -9,6 +9,7 @@ import ErrorPage from "./Pages/ErrorPage";
 import Register from "./Pages/Register/Register";
 import AddFoodItem from "./Pages/AddFoodItrem/AddFoodItem";
 import PrivateRoute from "./Private/PrivateRoute";
+import SingleFoodCard from "./components/SingleFoodCard";
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -37,6 +38,14 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <AddFoodItem />
           </PrivateRoute>
+        ),
+      },
+      {
+        path: "/food/:foodID",
+        element: (
+          <QueryClientProvider client={queryClient}>
+            <SingleFoodCard />
+          </QueryClientProvider>
         ),
       },
     ],

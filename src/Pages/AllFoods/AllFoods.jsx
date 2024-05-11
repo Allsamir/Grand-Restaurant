@@ -14,7 +14,6 @@ const AllFoods = () => {
       secureAxios
         .get(`/foodName?name=${searchInput.current.value}`)
         .then((res) => {
-          console.log(res);
           if (res.data == "") {
             setSearchResult("No Result Found Please Search Again");
             setSingleFood({});
