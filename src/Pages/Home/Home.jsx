@@ -16,10 +16,14 @@ const Home = () => {
         className="content text-navi-blue flex flex-col items-center min-h-screen space-y-3"
       >
         <h2 className="sub-title text-gold mt-12">Welcome to</h2>
-        <h1 className="text-9xl font-bold uppercase">Grand</h1>
-        <h3 className="text-6xl font-bold uppercase">Resturant</h3>
+        <h1 className="lg:text-9xl md:text-7xl text-6xl font-bold uppercase">
+          Grand
+        </h1>
+        <h3 className="lg:text-6xl md:text-4xl text-3xl font-bold uppercase pb-8">
+          Resturant
+        </h3>
         <Link
-          className=" btn btn-outline btn-lg text-white hover:bg-gold hover:text-navi-blue
+          className=" btn btn-outline lg:btn-lg text-white hover:bg-gold hover:text-navi-blue
            hover:border-gold transition"
           to={`/all-foods`}
         >

@@ -1,6 +1,7 @@
 import PageTitle from "../../components/PageTitle";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
+import FoodCard from "../../components/FoodCard";
 
 const AllFoods = () => {
   const secureAxios = useAxios();
@@ -24,13 +25,13 @@ const AllFoods = () => {
   return (
     <>
       <PageTitle text="All Foods" />
-      <div className="form-control md:w-1/2 w-full mx-auto relative">
+      <div className="form-control md:w-1/2 w-full mx-auto relative px-4">
         <input
           type="text"
           placeholder="Search Your Favorite Foods"
           className="input input-bordered md:w-auto"
         />
-        <button className="btn btn-ghost btn-circle absolute right-0">
+        <button className="btn btn-ghost btn-circle absolute right-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -47,8 +48,10 @@ const AllFoods = () => {
           </svg>
         </button>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 my-20">
-        {console.log(data)}
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 my-20">
+        {data.map((food, index) => (
+          <FoodCard key={index} food={food} />
+        ))}
       </div>
     </>
   );
