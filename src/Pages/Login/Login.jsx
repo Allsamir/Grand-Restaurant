@@ -2,10 +2,11 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const location = useLocation();
   const { login, loading, setLoading } = useContext(AuthContext);
   const [isPasswordVisiable, setPasswordVisiable] = useState(false);
   const onSubmit = (data, event) => {
@@ -21,7 +22,7 @@ const Login = () => {
           }).then(() => {
             setLoading(false);
             event.target.reset();
-            navigate("/");
+            navigate(location?.state || "/");
           });
         })
         .catch((error) => {
@@ -64,7 +65,7 @@ const Login = () => {
             alt=""
           />
         </div>
-        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg[#eee] text-black font-pop">
+        <div className="card shrink-0 w-full max-w-sm shadow-2xl text-black font-pop">
           <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control">
               <label className="label">
@@ -73,7 +74,7 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="Email"
-                className="input input-bordered bg-[#eee]"
+                className="input input-bordered"
                 required
                 {...register("email")}
               />
@@ -86,7 +87,7 @@ const Login = () => {
                 <input
                   type={isPasswordVisiable ? "text" : "password"}
                   placeholder="Password"
-                  className="input input-bordered bg-[#eee] w-full"
+                  className="input input-bordered w-full"
                   required
                   {...register("password")}
                 />

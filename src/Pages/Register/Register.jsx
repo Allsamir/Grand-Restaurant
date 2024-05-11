@@ -82,7 +82,7 @@ const Register = () => {
               <input
                 type="text"
                 placeholder="Name"
-                className="input input-bordered bg-[#eee]"
+                className="input input-bordered"
                 required
                 {...register("name")}
               />
@@ -94,7 +94,7 @@ const Register = () => {
               <input
                 type="email"
                 placeholder="email"
-                className="input input-bordered bg-[#eee]"
+                className="input input-bordered"
                 required
                 {...register("email")}
               />
@@ -106,7 +106,7 @@ const Register = () => {
               <input
                 type="text"
                 placeholder="Your Live Photo URL"
-                className="input input-bordered bg-[#eee]"
+                className="input input-bordered"
                 {...register("photoURL")}
               />
             </div>
@@ -118,7 +118,7 @@ const Register = () => {
                 <input
                   type={isPasswordVisiable ? "text" : "password"}
                   placeholder="Password"
-                  className="input input-bordered bg-[#eee] w-full"
+                  className="input input-bordered w-full"
                   required
                   {...register("password")}
                 />

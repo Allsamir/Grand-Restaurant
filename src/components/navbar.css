@@ -14,3 +14,10 @@
   bottom: -0.6rem;
   transition: 0.3s;
 }
+.menu-item {
+  font-family: "Lato", "sans-serif" !important;
+  font-weight: 600 !important;
+}
+.menu-item:hover {
+  color: #cfa670;
+}

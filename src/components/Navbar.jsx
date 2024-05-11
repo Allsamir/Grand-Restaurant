@@ -1,11 +1,21 @@
 import { Link, NavLink } from "react-router-dom";
 import SideNavbar from "./SideNavbar";
 import "./navbar.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import Tooltip from "@mui/material/Tooltip";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
     <div className="navbar bg-base-100 py-6">
       <div className="flex-1">
@@ -43,13 +53,39 @@ const Navbar = () => {
             </NavLink>
             {user ? (
               <>
-                <Tooltip title={user.displayName}>
+                <button
+                  id="basic-button"
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={handleClick}
+                >
                   <img
                     className="w-12 rounded-full inline-block mr-4 ml-3"
                     src={user.photoURL}
                     alt=""
                   />
-                </Tooltip>
+                </button>
+                <Menu
+                  id="basic-menu"
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "basic-button",
+                  }}
+                  className="mt-4"
+                >
+                  <MenuItem onClick={handleClose} className="menu-item">
+                    <Link to={`/add-food-items`}>Add Food Items</Link>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className="menu-item">
+                    My account
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} className="menu-item">
+                    Logout
+                  </MenuItem>
+                </Menu>
                 <button
                   onClick={logOut}
                   className="login hover:bg-gold hover:text-white hover:border-gold transition"
