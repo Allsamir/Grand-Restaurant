@@ -1,6 +1,26 @@
 import PageTitle from "../../components/PageTitle";
+import { useQuery } from "@tanstack/react-query";
+import useAxios from "../../hooks/useAxios";
 
 const AllFoods = () => {
+  const secureAxios = useAxios();
+  const { isPending, error, data } = useQuery({
+    queryKey: ["foodData"],
+    queryFn: async () => secureAxios.get("/foods").then((res) => res.data),
+  });
+  if (isPending)
+    return (
+      <div className="text-center flex justify-center items-center min-h-screen">
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="text-center text-4xl">
+        An error has occurred: + {error.message}
+      </div>
+    );
   return (
     <>
       <PageTitle text="All Foods" />
@@ -27,9 +47,10 @@ const AllFoods = () => {
           </svg>
         </button>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 my-20"></div>
+      <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 my-20">
+        {console.log(data)}
+      </div>
     </>
   );
 };
-
 export default AllFoods;
