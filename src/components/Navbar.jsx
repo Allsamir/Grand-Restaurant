@@ -1,7 +1,11 @@
 import { Link, NavLink } from "react-router-dom";
 import SideNavbar from "./SideNavbar";
 import "./navbar.css";
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import Tooltip from "@mui/material/Tooltip";
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   return (
     <div className="navbar bg-base-100 py-6">
       <div className="flex-1">
@@ -37,12 +41,30 @@ const Navbar = () => {
             >
               Gallery
             </NavLink>
-            <Link
-              className="login hover:bg-gold hover:text-white hover:border-gold transition"
-              to={`/login`}
-            >
-              Login
-            </Link>
+            {user ? (
+              <>
+                <Tooltip title={user.displayName}>
+                  <img
+                    className="w-12 rounded-full inline-block mr-4 ml-3"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                </Tooltip>
+                <button
+                  onClick={logOut}
+                  className="login hover:bg-gold hover:text-white hover:border-gold transition"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link
+                className="login hover:bg-gold hover:text-white hover:border-gold transition"
+                to={`/login`}
+              >
+                Login
+              </Link>
+            )}
           </div>
 
           <div className="md:hidden inline-block">
