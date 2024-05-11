@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import TemporaryDrawer from "./SideNavbar";
+import SideNavbar from "./SideNavbar";
 import "./navbar.css";
 const Navbar = () => {
   return (
@@ -46,7 +46,7 @@ const Navbar = () => {
           </div>
 
           <div className="md:hidden inline-block">
-            <TemporaryDrawer />
+            <SideNavbar />
           </div>
         </ul>
       </div>

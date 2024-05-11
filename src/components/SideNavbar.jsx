@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import DragHandleIcon from "@mui/icons-material/DragHandle";
 import { Link, NavLink } from "react-router-dom";
 
-export default function TemporaryDrawer() {
+export default function SideNavbar() {
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
