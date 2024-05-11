@@ -51,7 +51,7 @@ const Login = () => {
     setPasswordVisiable(!isPasswordVisiable);
 
   return (
-    <div className="hero min-h-screen">
+    <div className="hero min-h-screen mb-16">
       {loading && (
         <div className="min-h-screen text-center flex flex-col justify-center items-center">
           <span className="loading loading-bars loading-lg"></span>
