@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-navi-blue text-white">
+    <footer className="footer p-10 bg-[#222D38] text-white">
       <aside>
         <img
           src="https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/demo3/wp-content/uploads/sites/3/2020/12/logo@2x_white.png"
@@ -9,9 +9,9 @@ const Footer = () => {
           height={60}
         />
         <p>
-          ACME Industries Ltd.
+          Samir Industries Ltd.
           <br />
-          Providing reliable tech since 1992
+          Providing reliable tech since 2004
         </p>
       </aside>
       <nav>

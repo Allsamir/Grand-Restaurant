@@ -11,7 +11,7 @@ export default {
     colors: {
       white: "#fff",
       black: "#000",
-      "navi-blue": "#222D38",
+      "navi-blue": "#1A3853",
       gold: "#cfa670",
     },
   },
