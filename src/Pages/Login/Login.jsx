@@ -3,11 +3,13 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 const Login = () => {
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const location = useLocation();
-  const { login, loading, setLoading } = useContext(AuthContext);
+  const { login, loading, setLoading, signInWithGoogle } =
+    useContext(AuthContext);
   const [isPasswordVisiable, setPasswordVisiable] = useState(false);
   const onSubmit = (data, event) => {
     const { email, password } = data;
@@ -50,7 +52,29 @@ const Login = () => {
 
   const handleTogglePasswordVisibility = () =>
     setPasswordVisiable(!isPasswordVisiable);
-
+  const googleSignIn = () => {
+    signInWithGoogle()
+      .then(() => {
+        Swal.fire({
+          title: "Successfully Login",
+          icon: "success",
+          confirmButtonText: "Close",
+        }).then(() => {
+          setLoading(false);
+          navigate(location?.state || "/");
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        Swal.fire({
+          title: "Error!",
+          text: `${errorCode} ${errorMessage}`,
+          icon: "error",
+          confirmButtonText: "Close",
+        }).then(() => setLoading(false));
+      });
+  };
   return (
     <div className="hero min-h-screen mb-16">
       {loading && (
@@ -107,6 +131,12 @@ const Login = () => {
                 value={`Login`}
               />
             </div>
+            <button
+              className="btn btn-outline text-sky-500 hover:bg-gold hover:border-gold"
+              onClick={googleSignIn}
+            >
+              <FcGoogle />
+            </button>
             <p className="text-center py-2">
               Don&apos;t have any account?{" "}
               <Link className="text-gold" to={`/register`}>

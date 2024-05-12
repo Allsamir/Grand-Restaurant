@@ -124,8 +124,8 @@ const AddFoodItem = () => {
                 <span className="label-text">Price</span>
               </label>
               <input
-                type="text"
-                placeholder="Price"
+                type="number"
+                placeholder="Price in $"
                 className="input input-bordered"
                 required
                 {...register("price")}
@@ -136,7 +136,7 @@ const AddFoodItem = () => {
                 <span className="label-text">Quantity</span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Quantity"
                 className="input input-bordered"
                 required

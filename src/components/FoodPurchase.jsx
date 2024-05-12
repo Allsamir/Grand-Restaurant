@@ -50,7 +50,7 @@ const FoodPurchase = () => {
 
   if (error)
     return (
-      <div className="text-center text-4xl">
+      <div className="text-center flex justify-center items-center min-h-screen">
         An error has occurred: + {error.message}
       </div>
     );
@@ -202,7 +202,7 @@ const FoodPurchase = () => {
                   <span className="label-text text-white">Quantity</span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   placeholder="Quantity"
                   className="input input-bordered"
                   required
