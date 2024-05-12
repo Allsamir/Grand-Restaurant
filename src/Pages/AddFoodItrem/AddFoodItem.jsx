@@ -14,7 +14,7 @@ const AddFoodItem = () => {
       .then((res) => {
         if (res.status === 200) {
           Swal.fire({
-            title: "Successfully Added",
+            title: res.data.message,
             icon: "success",
             confirmButtonText: "Close",
           }).then(() => {

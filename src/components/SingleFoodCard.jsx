@@ -52,7 +52,7 @@ const SingleFoodCard = () => {
             <p className="text-base font-light">{data.short_description}</p>
           </div>
           <Link
-            to={``}
+            to={`/order/${data._id}`}
             style={{ letterSpacing: "1px", marginTop: "30px" }}
             className="btn btn-outline text-white hover:bg-gold hover:border-gold"
           >
