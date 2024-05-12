@@ -11,6 +11,8 @@ import AddFoodItem from "./Pages/AddFoodItrem/AddFoodItem";
 import PrivateRoute from "./Private/PrivateRoute";
 import SingleFoodCard from "./components/SingleFoodCard";
 import FoodPurchase from "./components/FoodPurchase";
+import MyAddedItems from "./Pages/MyAddedItems/MyAddedItems";
+import MyOrders from "./Pages/MyOrders/MyOrders";
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -55,6 +57,26 @@ const router = createBrowserRouter([
           <QueryClientProvider client={queryClient}>
             <PrivateRoute>
               <FoodPurchase />
+            </PrivateRoute>
+          </QueryClientProvider>
+        ),
+      },
+      {
+        path: "/my-added-items",
+        element: (
+          <QueryClientProvider client={queryClient}>
+            <PrivateRoute>
+              <MyAddedItems />
+            </PrivateRoute>
+          </QueryClientProvider>
+        ),
+      },
+      {
+        path: "/my-orders",
+        element: (
+          <QueryClientProvider client={queryClient}>
+            <PrivateRoute>
+              <MyOrders />
             </PrivateRoute>
           </QueryClientProvider>
         ),

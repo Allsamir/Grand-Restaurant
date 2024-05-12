@@ -63,7 +63,12 @@ export default function SideNavbar() {
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClick}
               >
-                <img className="w-12 rounded-full" src={user.photoURL} alt="" />
+                <img
+                  className="w-12 rounded-full"
+                  src={user.photoURL}
+                  alt={user.displayName}
+                  title={user.email}
+                />
               </button>
               <Menu
                 id="basic-menu"
@@ -79,10 +84,10 @@ export default function SideNavbar() {
                   <Link to={`/add-food-items`}>Add Food Items</Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose} className="menu-item">
-                  My account
+                  <Link to={`/my-added-items`}>My Added Food Items</Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose} className="menu-item">
-                  Logout
+                  <Link to={`/my-orders`}>My Ordered Food Items</Link>
                 </MenuItem>
               </Menu>
               <button

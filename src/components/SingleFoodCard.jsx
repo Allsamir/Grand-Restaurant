@@ -25,7 +25,7 @@ const SingleFoodCard = () => {
 
   if (error)
     return (
-      <div className="text-center text-4xl">
+      <div className="text-center flex justify-center items-center min-h-screen">
         An error has occurred: + {error.message}
       </div>
     );

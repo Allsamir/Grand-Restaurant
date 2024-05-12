@@ -64,6 +64,7 @@ const Navbar = () => {
                     className="w-12 rounded-full inline-block mr-4 ml-3"
                     src={user.photoURL}
                     alt=""
+                    title={user.email}
                   />
                 </button>
                 <Menu
@@ -80,10 +81,10 @@ const Navbar = () => {
                     <Link to={`/add-food-items`}>Add Food Items</Link>
                   </MenuItem>
                   <MenuItem onClick={handleClose} className="menu-item">
-                    My account
+                    <Link to={`/my-added-items`}>My Added Food Items</Link>
                   </MenuItem>
                   <MenuItem onClick={handleClose} className="menu-item">
-                    Logout
+                    <Link to={`/my-orders`}>My Ordered Food Items</Link>
                   </MenuItem>
                 </Menu>
                 <button
