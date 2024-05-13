@@ -13,10 +13,14 @@ const FoodPurchase = () => {
     queryFn: async () =>
       secureAxios.get(`/singleFood?id=${orderdFoodID}`).then((res) => res.data),
   });
-  const onSubmit = (data, event) => {
-    data.price = data.price.slice(1);
+  const onSubmit = (order, event) => {
+    order.price = order.price.slice(1);
     secureAxios
-      .post(`/orders`, { order: data, id: orderdFoodID })
+      .post(`/orders`, {
+        order: order,
+        id: orderdFoodID,
+        foodImage: data.foodImage,
+      })
       .then((res) => {
         if (res.status === 200) {
           Swal.fire({

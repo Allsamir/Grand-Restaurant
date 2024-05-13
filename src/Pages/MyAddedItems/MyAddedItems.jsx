@@ -63,7 +63,6 @@ const MyAddedItems = () => {
   };
 
   const handleDelete = (foodID) => {
-    console.log(foodID);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -130,7 +129,7 @@ const MyAddedItems = () => {
               <th>
                 <button
                   onClick={() => handleDelete(food._id)}
-                  className="btn btn-circle btn-outline hover:bg-gold hover:border-gold"
+                  className="btn btn-circle btn-outline hover:bg-gold hover:border-gold hover:scale-125"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
