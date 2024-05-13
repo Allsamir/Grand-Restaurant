@@ -32,6 +32,7 @@ export default function SideNavbar() {
         onClose={onClose}
         open={open}
         key={"left"}
+        style={{ width: "300px" }}
       >
         <div className="flex flex-col gap-5 mt-8">
           <NavLink
