@@ -13,7 +13,7 @@ const Contact = () => {
       </div>
       <div>
         <div className={``}>
-          <div className="my-auto">
+          <div className="my-auto p-8">
             <h1 className="text-5xl font-bold uppercase text-gold">
               Grand Resturant
             </h1>
