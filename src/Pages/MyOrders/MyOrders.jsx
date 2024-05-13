@@ -13,6 +13,7 @@ const MyOrders = () => {
     queryFn: async () =>
       secureAxios.get(`/my-orders?email=${user.email}`).then((res) => res.data),
   });
+  console.log(data);
   const handleDelete = (orderID) => {
     Swal.fire({
       title: "Will you cancel the order?",
@@ -67,6 +68,7 @@ const MyOrders = () => {
             <th></th>
             <th>Name</th>
             <th>Price</th>
+            <th>Quantity</th>
             <th>Date</th>
             <th>Time</th>
           </tr>
@@ -107,6 +109,7 @@ const MyOrders = () => {
               </td>
               <td className="font-semibold">{order.foodName}</td>
               <td className="font-semibold">{order.price}$</td>
+              <td className="font-semibold">{order.quantity}</td>
               <td className="font-semibold">{order.date}</td>
               <td className="font-semibold">{order.time}</td>
             </tr>

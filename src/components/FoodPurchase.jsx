@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../hooks/useAxios";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../Provider/AuthProvider";
 const FoodPurchase = () => {
   const { orderdFoodID } = useParams();
   const { register, handleSubmit } = useForm();
   const secureAxios = useAxios();
+  const { user } = useContext(AuthContext);
   const { isPending, error, data } = useQuery({
     queryKey: ["orderdFoodData"],
     queryFn: async () =>
@@ -82,9 +84,8 @@ const FoodPurchase = () => {
                   placeholder="Food Name"
                   className="input input-bordered"
                   required
-                  readOnly
                   name="foodName"
-                  defaultValue={data?.foodName}
+                  defaultValue={`${data.foodName}`}
                   {...register("foodName")}
                 />
               </div>
@@ -98,7 +99,7 @@ const FoodPurchase = () => {
                   className="input input-bordered"
                   required
                   readOnly
-                  defaultValue={data?.foodCategory}
+                  defaultValue={`${data.foodCategory}`}
                   name="foodCategory"
                   {...register("foodCategory")}
                 />
@@ -147,7 +148,7 @@ const FoodPurchase = () => {
                   className="input input-bordered"
                   required
                   readOnly
-                  defaultValue={data?.foodOrigin}
+                  defaultValue={`${data.foodOrigin}`}
                   name="foodOrigin"
                   {...register("foodOrigin")}
                 />
@@ -164,7 +165,7 @@ const FoodPurchase = () => {
                   className="input input-bordered"
                   required
                   readOnly
-                  defaultValue={`${data?.email}`}
+                  defaultValue={`${user.email}`}
                   name="email"
                   {...register("email")}
                 />
@@ -178,7 +179,7 @@ const FoodPurchase = () => {
                   placeholder="Name"
                   className="input input-bordered"
                   required
-                  defaultValue={data?.name}
+                  defaultValue={`${user.name || ""}`}
                   readOnly
                   name="name"
                   {...register("name")}
@@ -197,7 +198,7 @@ const FoodPurchase = () => {
                   required
                   readOnly
                   name="price"
-                  defaultValue={`$${data?.price}`}
+                  defaultValue={`$${data.price}`}
                   {...register("price")}
                 />
               </div>
