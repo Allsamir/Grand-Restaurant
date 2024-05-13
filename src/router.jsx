@@ -22,7 +22,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <QueryClientProvider client={queryClient}>
+            <Home />
+          </QueryClientProvider>
+        ),
       },
       {
         path: "/all-foods",
