@@ -16,12 +16,14 @@ const FoodPurchase = () => {
       secureAxios.get(`/singleFood?id=${orderdFoodID}`).then((res) => res.data),
   });
   const onSubmit = (order, event) => {
-    order.price = order.price.slice(1);
     secureAxios
       .post(`/orders`, {
-        order: order,
+        order: data,
         id: orderdFoodID,
-        foodImage: data.foodImage,
+        quantity: order.quantity,
+        email: user.email,
+        time: order.time,
+        date: order.date,
       })
       .then((res) => {
         if (res.status === 200) {
@@ -68,7 +70,10 @@ const FoodPurchase = () => {
           Order Our Best Recipe
         </h1>
       </div>
-      <div style={{ backgroundImage: `url(${data?.foodImage})` }}>
+      <div
+        style={{ backgroundImage: `url(${data?.foodImage})` }}
+        className="bg-center bg-cover mb-12"
+      >
         <div style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}>
           <form
             className="card-body md:w-4/5 w-full mx-auto"
@@ -85,7 +90,8 @@ const FoodPurchase = () => {
                   className="input input-bordered"
                   required
                   name="foodName"
-                  defaultValue={`${data.foodName}`}
+                  readOnly
+                  value={`${data.foodName}`}
                   {...register("foodName")}
                 />
               </div>
@@ -99,8 +105,8 @@ const FoodPurchase = () => {
                   className="input input-bordered"
                   required
                   readOnly
-                  defaultValue={`${data.foodCategory}`}
                   name="foodCategory"
+                  value={`${data.foodCategory}`}
                   {...register("foodCategory")}
                 />
               </div>
@@ -119,6 +125,7 @@ const FoodPurchase = () => {
                       required
                       name="date"
                       defaultValue={new Date().toLocaleDateString()}
+                      readOnly
                       {...register("date")}
                     />
                   </div>
@@ -132,6 +139,7 @@ const FoodPurchase = () => {
                       className="input input-bordered"
                       required
                       defaultValue={new Date().toLocaleTimeString()}
+                      readOnly
                       name="time"
                       {...register("time")}
                     />
@@ -148,8 +156,8 @@ const FoodPurchase = () => {
                   className="input input-bordered"
                   required
                   readOnly
-                  defaultValue={`${data.foodOrigin}`}
                   name="foodOrigin"
+                  value={`${data.foodOrigin}`}
                   {...register("foodOrigin")}
                 />
               </div>
@@ -165,7 +173,7 @@ const FoodPurchase = () => {
                   className="input input-bordered"
                   required
                   readOnly
-                  defaultValue={`${user.email}`}
+                  value={`${user.email}`}
                   name="email"
                   {...register("email")}
                 />
@@ -179,7 +187,7 @@ const FoodPurchase = () => {
                   placeholder="Name"
                   className="input input-bordered"
                   required
-                  defaultValue={`${user.name || ""}`}
+                  value={`${user.displayName || ""}`}
                   readOnly
                   name="name"
                   {...register("name")}
@@ -198,7 +206,7 @@ const FoodPurchase = () => {
                   required
                   readOnly
                   name="price"
-                  defaultValue={`$${data.price}`}
+                  value={`$${data.price}`}
                   {...register("price")}
                 />
               </div>
