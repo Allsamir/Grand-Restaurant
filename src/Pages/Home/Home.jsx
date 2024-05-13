@@ -3,6 +3,7 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 import TopFoodSection from "../../components/TopFoodSection";
 import Testimonial from "../../components/Testimonial";
+import Contact from "../../components/Contact";
 
 const Home = () => {
   return (
@@ -73,8 +74,28 @@ const Home = () => {
           you may also <span className="text-gold">review</span> us
         </p>
       </motion.div>
-      <div className="testimonial my-32">
+      <div className="testimonial mt-32">
         <Testimonial />
+      </div>
+
+      <div className="contect mb-20">
+        <motion.div
+          animate={{ y: 100 }}
+          transition={{ ease: "easeOut", duration: 2, delay: 3 }}
+          className="text-center"
+        >
+          <h2 className="font-kristi lg:text-7xl text-5xl text-gold">
+            Contact Us
+          </h2>
+          <p
+            className="font-semibold uppercase lg:text-3xl text-2xl py-12"
+            style={{ lineHeight: "50px" }}
+          >
+            Please don&apos;t hesitate to{" "}
+            <span className="text-gold">contact</span> us <br />
+          </p>
+        </motion.div>
+        <Contact />
       </div>
     </>
   );

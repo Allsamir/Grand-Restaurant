@@ -9,6 +9,7 @@ const Testimonial = () => {
         loop
         margin={50}
         items={3}
+        dots={false}
         responsive={{
           0: {
             items: 1, // Display 1 item on mobile devices
