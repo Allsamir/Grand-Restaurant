@@ -19,7 +19,10 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100 py-6">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl" href="">
+        <a
+          className="btn btn-ghost text-xl"
+          href="https://grand-resturant-01.web.app"
+        >
           <img
             src="https://grandrestaurantv6.b-cdn.net/grandrestaurantv6/demo3/wp-content/uploads/sites/3/2020/12/logo@2x.png"
             alt=""
