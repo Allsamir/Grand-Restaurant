@@ -56,7 +56,6 @@ const MyOrders = () => {
       </div>
     );
   }
-  console.log(data);
   return (
     <div className="overflow-x-auto min-h-screen">
       <table className="table">

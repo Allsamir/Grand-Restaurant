@@ -28,7 +28,6 @@ const Reviews = () => {
       </div>
     );
   }
-  console.log(data);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 my-20">
       {data.map((review, index) => (
