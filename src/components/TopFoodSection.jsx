@@ -22,7 +22,6 @@ const TopFoodSection = () => {
         An error has occurred: + {error.message}
       </div>
     );
-  console.log(data);
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2">
@@ -33,7 +32,7 @@ const TopFoodSection = () => {
       <div className="text-center mt-16">
         <Link
           to={`/all-foods`}
-          className="btn btn-lg btn-outline uppercase text-black hover:bg-gold hover:border-gold hover:text-white hover:scale-110"
+          className="btn lg:btn-lg btn-outline uppercase text-black hover:bg-gold hover:border-gold hover:text-white hover:scale-110"
           style={{ letterSpacing: "1px" }}
         >
           All Foods

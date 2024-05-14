@@ -23,7 +23,7 @@ const Contact = () => {
             </p>
             <a href="tel:01863966821">
               <button
-                className={`btn btn-lg btn-outline uppercase text-black hover:bg-gold hover:border-gold hover:text-white hover:scale-110`}
+                className={`btn lg:btn-lg btn-outline uppercase text-black hover:bg-gold hover:border-gold hover:text-white hover:scale-110`}
               >
                 Contact Us
               </button>
