@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxios from "../hooks/useAxios";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
+import { Modal } from "antd";
 import { AuthContext } from "../Provider/AuthProvider";
 const FoodPurchase = () => {
   const { orderdFoodID } = useParams();
+  const [open, setOpen] = useState(false);
   const { register, handleSubmit } = useForm();
   const secureAxios = useAxios();
   const { user } = useContext(AuthContext);
@@ -15,6 +17,9 @@ const FoodPurchase = () => {
     queryFn: async () =>
       secureAxios.get(`/singleFood?id=${orderdFoodID}`).then((res) => res.data),
   });
+  const handleCancel = () => {
+    setOpen(false);
+  };
   const onSubmit = (order, event) => {
     secureAxios
       .post(`/orders`, {
@@ -47,7 +52,10 @@ const FoodPurchase = () => {
   };
   useEffect(() => {
     document.title = `Grand Resturant | ${data?.foodName}`;
-  }, [data?.foodName]);
+    if (user?.email === data?.email) {
+      setOpen(true);
+    }
+  }, [data?.foodName, data?.email, user?.email]);
 
   if (isPending)
     return (
@@ -228,12 +236,20 @@ const FoodPurchase = () => {
               <button
                 style={{ letterSpacing: "1px" }}
                 className=" btn btn-outline text-white hover:bg-gold hover:border-gold"
+                disabled={user.email === data.email ? true : false}
               >
                 Order Now
               </button>
             </div>
           </form>
         </div>
+        <Modal
+          title="You can't order your own added items"
+          className="font-sans"
+          open={open}
+          onCancel={handleCancel}
+          footer={null}
+        ></Modal>
       </div>
     </>
   );
