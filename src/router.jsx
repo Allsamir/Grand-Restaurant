@@ -36,7 +36,14 @@ const router = createBrowserRouter([
           </QueryClientProvider>
         ),
       },
-      { path: "/gallery", element: <Gallery /> },
+      {
+        path: "/gallery",
+        element: (
+          <QueryClientProvider client={queryClient}>
+            <Gallery />
+          </QueryClientProvider>
+        ),
+      },
       { path: "/login", element: <Login /> },
       { path: "register", element: <Register /> },
       {

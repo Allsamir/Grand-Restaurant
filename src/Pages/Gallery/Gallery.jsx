@@ -6,6 +6,7 @@ import useAxios from "../../hooks/useAxios";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import Reviews from "../../components/Reviews";
 
 const Gallery = () => {
   const [open, setOpen] = useState(false);
@@ -49,6 +50,7 @@ const Gallery = () => {
   return (
     <>
       <PageTitle text="Gallery" />
+      <Reviews />
       <div className="text-center mb-20">
         <button
           className="btn btn-outline lg:btn-lg hover:bg-gold hover:border-gold hover:text-white"
