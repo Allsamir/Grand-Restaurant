@@ -52,15 +52,15 @@ const AuthProvider = ({ children }) => {
       setUser(user);
       setLoading(false);
       if (user) {
-        //         secureAxios
-        //           .post("/jwt", { email: user.email })
-        //           .then((res) => console.log(res.data))
-        //           .catch((err) => console.error(err));
+        secureAxios
+          .post("/jwt", { email: user.email })
+          .then((res) => console.log(res.data))
+          .catch((err) => console.error(err));
       } else {
-        //         secureAxios
-        //           .post("/logout", { email: null })
-        //           .then((res) => console.log(res.data))
-        //           .catch((err) => console.error(err));
+        secureAxios
+          .post("/logout", { email: null })
+          .then((res) => console.log(res.data))
+          .catch((err) => console.error(err));
       }
     });
   }, [secureAxios]);

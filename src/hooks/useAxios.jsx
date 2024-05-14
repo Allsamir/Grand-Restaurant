@@ -6,6 +6,7 @@ import { auth } from "../config/firebase.config";
 
 const secureAxios = axios.create({
   baseURL: "http://localhost:3000",
+  withCredentials: true,
 });
 
 const useAxios = () => {
