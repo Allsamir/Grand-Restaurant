@@ -5,7 +5,7 @@ import SingleReview from "./SingleReview";
 const Reviews = () => {
   const secureAxios = useAxios();
   const { isPending, error, data } = useQuery({
-    queryKey: ["foodDataOfCurrentUser"],
+    queryKey: ["reviews"],
     queryFn: async () => secureAxios.get(`/reviews`).then((res) => res.data),
   });
   if (isPending)

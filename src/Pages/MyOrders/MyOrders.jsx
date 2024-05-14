@@ -13,7 +13,6 @@ const MyOrders = () => {
     queryFn: async () =>
       secureAxios.get(`/my-orders?email=${user.email}`).then((res) => res.data),
   });
-  console.log(data);
   const handleDelete = (orderID) => {
     Swal.fire({
       title: "Will you cancel the order?",

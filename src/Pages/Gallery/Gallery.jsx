@@ -7,11 +7,13 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import Reviews from "../../components/Reviews";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Gallery = () => {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const secureAxios = useAxios();
+  const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
@@ -35,6 +37,7 @@ const Gallery = () => {
             confirmButtonText: "Close",
           }).then(() => {
             event.target.reset();
+            queryClient.invalidateQueries("reviews");
           });
         }
       })
