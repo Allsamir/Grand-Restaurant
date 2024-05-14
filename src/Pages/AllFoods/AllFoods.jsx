@@ -6,9 +6,15 @@ import { useRef, useState } from "react";
 const AllFoods = () => {
   const secureAxios = useAxios();
   const searchInput = useRef(null);
+  const [totalProduct, setTotalProducts] = useState(0);
   const [search, setSearch] = useState(false);
   const [singleFood, setSingleFood] = useState({});
   const [searchResult, setSearchResult] = useState("");
+  const itemsPerPage = 9;
+  const numberOfPages = Math.ceil(totalProduct / itemsPerPage);
+  const pages = [...Array(numberOfPages).keys()];
+  const [currentPage, setCurrentPage] = useState(1);
+  console.log(currentPage);
   const handleSearchFunc = () => {
     if (!searchInput.current.value == "") {
       secureAxios
@@ -29,9 +35,26 @@ const AllFoods = () => {
     }
   };
   const { isPending, error, data } = useQuery({
-    queryKey: ["foodData"],
-    queryFn: async () => secureAxios.get("/foods").then((res) => res.data),
+    queryKey: ["foodData", currentPage], //when currentPage's state is changed fetch data again. Like useEffect's [] method
+    queryFn: async () => {
+      const response = await secureAxios.get(
+        `/foods?page=${currentPage}&itemsPerPage=${itemsPerPage}`,
+      );
+      setTotalProducts(parseInt(response.data?.totalProducts));
+      return response.data.foods;
+    },
+    keepPreviousData: true,
   });
+  const handleNextBtn = () => {
+    if (currentPage < pages.length) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const handlePrevBtn = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
   if (isPending)
     return (
       <div className="text-center flex justify-center items-center min-h-screen">
@@ -91,6 +114,25 @@ const AllFoods = () => {
           ))}
         </div>
       )}
+      <div className="pagination text-center my-12 flex justify-center items-center">
+        <button className="join-item text-4xl" onClick={handlePrevBtn}>
+          «
+        </button>
+        {pages.map((button, index) => (
+          <button
+            className={`btn btn-outline text-black mx-4 lg:btn-lg hover:bg-gold hover:border-gold ${
+              currentPage === button + 1 && "bg-gold text-white"
+            }`}
+            key={index}
+            onClick={() => setCurrentPage(button + 1)}
+          >
+            {button + 1}
+          </button>
+        ))}
+        <button className="join-item text-4xl" onClick={handleNextBtn}>
+          »
+        </button>
+      </div>
     </>
   );
 };
