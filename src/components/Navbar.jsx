@@ -28,6 +28,7 @@ const Navbar = () => {
             alt=""
             width="120"
             height="68"
+            loading="lazy"
           />
         </a>
       </div>
@@ -67,6 +68,7 @@ const Navbar = () => {
                     className="w-12 rounded-full inline-block mr-4 ml-3"
                     src={user.photoURL}
                     alt=""
+                    loading="lazy"
                     title={user.email}
                   />
                 </button>

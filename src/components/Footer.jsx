@@ -7,6 +7,7 @@ const Footer = () => {
           alt=""
           width={120}
           height={60}
+          loading="lazy"
         />
         <p>
           Samir Industries Ltd.

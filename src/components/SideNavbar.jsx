@@ -65,6 +65,7 @@ export default function SideNavbar() {
                 onClick={handleClick}
               >
                 <img
+                  loading="lazy"
                   className="w-12 rounded-full"
                   src={user.photoURL}
                   alt={user.displayName}

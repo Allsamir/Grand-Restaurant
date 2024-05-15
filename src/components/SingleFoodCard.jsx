@@ -36,6 +36,7 @@ const SingleFoodCard = () => {
       </div>
       <div className="relative overflow-hidden singleFood my-20 h-svh">
         <img
+          loading="lazy"
           src={data?.foodImage}
           alt={data.foodName}
           className="w-full block transition-all hover:scale-125"

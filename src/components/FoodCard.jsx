@@ -22,6 +22,7 @@ const FoodCard = ({ food }) => {
           src={food?.foodImage}
           alt={food.foodName}
           className="w-full block transition-all hover:scale-125"
+          loading="lazy"
         />
         <div className="layers text-white py-16 px-8">
           <h1 className="text-3xl font-bold pb-6">{food.foodName}</h1>

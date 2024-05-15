@@ -151,7 +151,11 @@ const MyAddedItems = () => {
                 <div className="flex items-center gap-3">
                   <div className="avatar">
                     <div className="mask mask-squircle w-24 h-24">
-                      <img src={food.foodImage} alt={food.foodName} />
+                      <img
+                        src={food.foodImage}
+                        alt={food.foodName}
+                        loading="lazy"
+                      />
                     </div>
                   </div>
                 </div>

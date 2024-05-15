@@ -25,6 +25,7 @@ const TopFoodCard = ({ food }) => {
     >
       <div className="relative overflow-hidden singleFood">
         <img
+          loading="lazy"
           src={food?.foodImage}
           alt={food.foodName}
           className="w-full block transition-all hover:scale-125"

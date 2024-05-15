@@ -8,7 +8,6 @@ const secureAxios = axios.create({
   baseURL: "https://assignment-11-server-indol.vercel.app",
   withCredentials: true,
 });
-
 const useAxios = () => {
   useEffect(() => {
     secureAxios.interceptors.response.use(

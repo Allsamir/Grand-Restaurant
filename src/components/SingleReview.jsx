@@ -20,6 +20,7 @@ const SingleReview = ({ review }) => {
       <div className="relative overflow-hidden food">
         <img
           src={review.imageURL}
+          loading="lazy"
           alt={review.name}
           className="w-full block transition-all hover:scale-125"
         />

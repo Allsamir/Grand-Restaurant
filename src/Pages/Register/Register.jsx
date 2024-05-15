@@ -69,6 +69,7 @@ const Register = () => {
       <div className="hero-content flex-col lg:flex-row-reverse w-ful gap-12">
         <div className="text-center lg:text-left">
           <img
+            loading="lazy"
             src="https://themes.themegoods.com/grandrestaurantv6/demo3/wp-content/uploads/sites/3/2020/12/grilled-t-bone-steak-PKRXHAJ.jpg"
             alt=""
           />
