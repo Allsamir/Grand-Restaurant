@@ -3,7 +3,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
 import FoodCard from "../../components/FoodCard";
 import { useRef, useState } from "react";
-import axios from "axios";
 import { queryClient } from "../../router";
 const AllFoods = () => {
   const secureAxios = useAxios();
@@ -41,12 +40,12 @@ const AllFoods = () => {
   const { isPending, error, data } = useQuery({
     queryKey: ["foodData", currentPage], //when currentPage's state is changed fetch data again. Like useEffect's [] method
     queryFn: async () => {
-      // const response = await secureAxios.get(
-      //   `/foods?page=${currentPage}&itemsPerPage=${itemsPerPage}`,
-      // );
-      const response = await axios.get(
-        `http://localhost:3000/foods?page=${currentPage}&itemsPerPage=${itemsPerPage}&category=${category}`,
+      const response = await secureAxios.get(
+        `/foods?page=${currentPage}&itemsPerPage=${itemsPerPage}&category=${category}`,
       );
+      // const response = await axios.get(
+      //   `http://localhost:3000/foods?page=${currentPage}&itemsPerPage=${itemsPerPage}&category=${category}`,
+      // );
       setTotalProducts(parseInt(response.data?.totalProducts));
       return response.data.foods;
     },
@@ -106,7 +105,7 @@ const AllFoods = () => {
         </button>
       </div>
       <div className="my-12">
-        <form className="flex items-center justify-center gap-4">
+        <form className="flex items-center justify-center gap-4 flex-wrap">
           <input
             type="radio"
             name="category"
@@ -127,14 +126,154 @@ const AllFoods = () => {
             value={`Italian`}
             id="category2"
             onChange={() => {
+              setCategory("Italian");
               queryClient.invalidateQueries({
                 queryKey: ["foodData"],
               });
-              setCategory("Italian");
             }}
             className="radio radio-warning"
           />
           <label htmlFor="category2">Italian</label>
+          <input
+            type="radio"
+            name="category"
+            value={`Thai`}
+            id="category2"
+            onChange={() => {
+              setCategory("Thai");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">Thai</label>
+          <input
+            type="radio"
+            name="category"
+            value={`Japanese`}
+            id="category2"
+            onChange={() => {
+              setCategory("Japanese");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">Japanese</label>
+          <input
+            type="radio"
+            name="category"
+            value={`American`}
+            id="category2"
+            onChange={() => {
+              setCategory("American");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">American</label>
+          <input
+            type="radio"
+            name="category"
+            value={`Indian`}
+            id="category2"
+            onChange={() => {
+              setCategory("Indian");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">Indian</label>
+          <input
+            type="radio"
+            name="category"
+            value={`Middle Eastern`}
+            id="category2"
+            onChange={() => {
+              setCategory("Middle Eastern");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">Middle Eastern</label>
+          <input
+            type="radio"
+            name="category"
+            value={`British`}
+            id="category2"
+            onChange={() => {
+              setCategory("British");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">British</label>
+          <input
+            type="radio"
+            name="category"
+            value={`Brazilian`}
+            id="category2"
+            onChange={() => {
+              setCategory("Brazilian");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">Brazilian</label>
+          <input
+            type="radio"
+            name="category"
+            value={`Vietnamese`}
+            id="category2"
+            onChange={() => {
+              setCategory("Vietnamese");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">Vietnamese</label>
+          <input
+            type="radio"
+            name="category"
+            value={`Argentinean`}
+            id="category2"
+            onChange={() => {
+              setCategory("Argentinean");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">Argentinean</label>
+          <input
+            type="radio"
+            name="category"
+            value={`Spanish`}
+            id="category2"
+            onChange={() => {
+              setCategory("Spanish");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">Spanish</label>
           <input
             type="radio"
             name="category"
