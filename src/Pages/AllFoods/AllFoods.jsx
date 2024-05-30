@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAxios from "../../hooks/useAxios";
 import FoodCard from "../../components/FoodCard";
 import { useRef, useState } from "react";
+import axios from "axios";
+import { queryClient } from "../../router";
 const AllFoods = () => {
   const secureAxios = useAxios();
   const searchInput = useRef(null);
@@ -14,6 +16,8 @@ const AllFoods = () => {
   const numberOfPages = Math.ceil(totalProduct / itemsPerPage);
   const pages = [...Array(numberOfPages).keys()];
   const [currentPage, setCurrentPage] = useState(1);
+  const [category, setCategory] = useState(null);
+  console.log(category);
   console.log(currentPage);
   const handleSearchFunc = () => {
     if (!searchInput.current.value == "") {
@@ -37,13 +41,16 @@ const AllFoods = () => {
   const { isPending, error, data } = useQuery({
     queryKey: ["foodData", currentPage], //when currentPage's state is changed fetch data again. Like useEffect's [] method
     queryFn: async () => {
-      const response = await secureAxios.get(
-        `/foods?page=${currentPage}&itemsPerPage=${itemsPerPage}`,
+      // const response = await secureAxios.get(
+      //   `/foods?page=${currentPage}&itemsPerPage=${itemsPerPage}`,
+      // );
+      const response = await axios.get(
+        `http://localhost:3000/foods?page=${currentPage}&itemsPerPage=${itemsPerPage}&category=${category}`,
       );
       setTotalProducts(parseInt(response.data?.totalProducts));
       return response.data.foods;
     },
-    keepPreviousData: true,
+    // keepPreviousData: true,
   });
   const handleNextBtn = () => {
     if (currentPage < pages.length) {
@@ -97,6 +104,52 @@ const AllFoods = () => {
             />
           </svg>
         </button>
+      </div>
+      <div className="my-12">
+        <form className="flex items-center justify-center gap-4">
+          <input
+            type="radio"
+            name="category"
+            value={`Bangladeshi`}
+            id="category1"
+            onChange={() => {
+              setCategory("Bangladeshi");
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category1">Bangladeshi</label>
+          <input
+            type="radio"
+            name="category"
+            value={`Italian`}
+            id="category2"
+            onChange={() => {
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+              setCategory("Italian");
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">Italian</label>
+          <input
+            type="radio"
+            name="category"
+            value={`All`}
+            id="category2"
+            onChange={() => {
+              setCategory(null);
+              queryClient.invalidateQueries({
+                queryKey: ["foodData"],
+              });
+            }}
+            className="radio radio-warning"
+          />
+          <label htmlFor="category2">All</label>
+        </form>
       </div>
       {search ? (
         <>

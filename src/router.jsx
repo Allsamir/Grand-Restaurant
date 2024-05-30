@@ -13,7 +13,7 @@ import SingleFoodCard from "./components/SingleFoodCard";
 import FoodPurchase from "./components/FoodPurchase";
 import MyAddedItems from "./Pages/MyAddedItems/MyAddedItems";
 import MyOrders from "./Pages/MyOrders/MyOrders";
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
