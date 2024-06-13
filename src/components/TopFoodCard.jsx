@@ -8,7 +8,6 @@ const TopFoodCard = ({ food }) => {
   useEffect(() => {
     AOS.init({
       disable: "mobile",
-      startEvent: "load",
       offset: 200,
       duration: 800,
       easing: "ease-in-sine",

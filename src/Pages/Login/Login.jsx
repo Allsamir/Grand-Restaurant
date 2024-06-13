@@ -124,6 +124,14 @@ const Login = () => {
                   {isPasswordVisiable ? "🙈" : "👁️"}
                 </button>
               </div>
+              <label className="label">
+                <Link
+                  to={`/forget-password`}
+                  className="label-text-alt link link-hover"
+                >
+                  Forgot password?
+                </Link>
+              </label>
             </div>
             <div className="form-control mt-6">
               <input

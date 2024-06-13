@@ -13,6 +13,7 @@ import SingleFoodCard from "./components/SingleFoodCard";
 import FoodPurchase from "./components/FoodPurchase";
 import MyAddedItems from "./Pages/MyAddedItems/MyAddedItems";
 import MyOrders from "./Pages/MyOrders/MyOrders";
+import ForgetPassword from "./Pages/Login/ForgetPassword";
 export const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
             </PrivateRoute>
           </QueryClientProvider>
         ),
+      },
+      {
+        path: "/forget-password",
+        element: <ForgetPassword />,
       },
     ],
   },
